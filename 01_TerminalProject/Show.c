@@ -30,12 +30,11 @@ int main(int argc, char *argv[]) {
     getmaxyx(stdscr, rows, cols);
 
     WINDOW *win = newwin(rows, cols, 0, 0);
-
     box(win, 0, 0);
     mvwprintw(win, 0, 2, " %s ", argv[1]);
     wrefresh(win);
-    WINDOW *frame = derwin(win, rows - 2, cols - 2, 1, 1);
 
+    WINDOW *frame = derwin(win, rows - 2, cols - 2, 1, 1);
     scrollok(frame, TRUE);
 
     char line[1024];
