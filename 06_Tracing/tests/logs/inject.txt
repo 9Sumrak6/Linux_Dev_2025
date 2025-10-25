@@ -1,0 +1,27 @@
+strace inject support: 1
+Trying strace-inject for open (if your strace supports exact syntax, adjust if needed)...
+strace: Can't stat '../../move': No such file or directory
+strace-inject run returned 1; will fallback to LD_PRELOAD for open
+./tests/test_strace_or_preload.sh: 64: ../../move: not found
+OK: infile remains after induced failure (open)
+Trying strace-inject for read (if your strace supports exact syntax, adjust if needed)...
+strace: Can't stat '../../move': No such file or directory
+strace-inject run returned 1; will fallback to LD_PRELOAD for read
+./tests/test_strace_or_preload.sh: 64: ../../move: not found
+OK: infile remains after induced failure (read)
+Trying strace-inject for write (if your strace supports exact syntax, adjust if needed)...
+strace: Can't stat '../../move': No such file or directory
+strace-inject run returned 1; will fallback to LD_PRELOAD for write
+./tests/test_strace_or_preload.sh: 64: ../../move: not found
+OK: infile remains after induced failure (write)
+Trying strace-inject for rename (if your strace supports exact syntax, adjust if needed)...
+strace: Can't stat '../../move': No such file or directory
+strace-inject run returned 1; will fallback to LD_PRELOAD for rename
+./tests/test_strace_or_preload.sh: 64: ../../move: not found
+OK: infile remains after induced failure (rename)
+Trying strace-inject for unlink (if your strace supports exact syntax, adjust if needed)...
+strace: Can't stat '../../move': No such file or directory
+strace-inject run returned 1; will fallback to LD_PRELOAD for unlink
+./tests/test_strace_or_preload.sh: 64: ../../move: not found
+OK: infile remains after induced failure (unlink)
+inject tests done

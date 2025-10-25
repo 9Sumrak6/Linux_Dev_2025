@@ -1,0 +1,3 @@
+./tests/test_protect.sh: 11: ../move: not found
+move rc = 127
+protect OK: infile remains
