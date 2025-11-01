@@ -1,0 +1,7 @@
+*
+
+!*Makefile.am
+!configure.ac
+!src/rhasher.c
+!tests/test_rhasher.sh
+!autogen.sh
