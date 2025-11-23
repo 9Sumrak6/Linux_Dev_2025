@@ -1,0 +1,50 @@
+--- a/maze.c	2025-11-23 22:46:06.638862931 +0300
++++ b/maze.c	2025-11-23 22:46:10.736862740 +0300
+@@ -6,6 +6,7 @@
+ int H, W;
+ char **maze;
+ int **used;
++char PASS, WALL;
+ 
+ int dx[4] = {1, -1, 0, 0};
+ int dy[4] = {0, 0, 1, -1};
+@@ -32,19 +33,21 @@
+ 
+         int wx = 2*x + 1 + (nx - x);
+         int wy = 2*y + 1 + (ny - y);
+-        maze[wx][wy] = '.';
++        maze[wx][wy] = PASS;
+ 
+         dfs(nx, ny);
+     }
+ }
+ 
+ int main(int argc, char *argv[]) {
+-    if (argc < 2) {
+-        fprintf(stderr, "Usage: %s <size>\n", argv[0]);
++    if (argc < 3) {
++        fprintf(stderr, "Usage: %s <pass-wall> <size>\n", argv[0]);
+         return 1;
+     }
+ 
+-    N = atoi(argv[1]);
++    PASS = argv[1][0];
++    WALL = argv[1][1];
++    N = atoi(argv[2]);
+     H = W = 2*N + 1;
+ 
+     maze = malloc(H * sizeof(char*));
+@@ -56,11 +59,11 @@
+ 
+     for (int i = 0; i < H; i++)
+         for (int j = 0; j < W; j++)
+-            maze[i][j] = '#';
++            maze[i][j] = WALL;
+ 
+     for (int i = 0; i < N; i++)
+         for (int j = 0; j < N; j++)
+-            maze[2*i+1][2*j+1] = '.';
++            maze[2*i+1][2*j+1] = PASS;
+ 
+     dfs(0, 0);
+ 

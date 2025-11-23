@@ -1,0 +1,34 @@
+--- a/maze.c   2025-11-23 22:46:06.638862931 +0300
++++ b/maze.c   2025-11-23 22:46:10.736862740 +0300
+@@ -40,14 +40,17 @@
+ }
+ 
+ int main(int argc, char *argv[]) {
+-    if (argc < 3) {
+-        fprintf(stderr, "Usage: %s <pass-wall> <size>\n", argv[0]);
++    if (argc < 4) {
++        fprintf(stderr, "Usage: %s <seed> <pass-wall> <size>\n", argv[0]);
+         return 1;
+     }
+ 
+-    PASS = argv[1][0];
+-    WALL = argv[1][1];
+-    N = atoi(argv[2]);
++    unsigned int seed = atoi(argv[1]);
++    srand(seed);
++
++    PASS = argv[2][0];
++    WALL = argv[2][1];
++    N = atoi(argv[3]);
+     H = W = 2*N + 1;
+ 
+     maze = malloc(H * sizeof(char*));
+@@ -55,8 +58,6 @@
+     for (int i = 0; i < H; i++) maze[i] = malloc(W * sizeof(char));
+     for (int i = 0; i < N; i++) used[i] = calloc(N, sizeof(int));
+ 
+-    srand(time(NULL));
+-
+     for (int i = 0; i < H; i++)
+         for (int j = 0; j < W; j++)
+             maze[i][j] = WALL;

@@ -1,0 +1,51 @@
+--- a/maze.c	2025-11-23 22:46:06.638862931 +0300
++++ b/maze.c	2025-11-23 22:46:10.736862740 +0300
+@@ -2,12 +2,10 @@
+ #include <stdlib.h>
+ #include <time.h>
+ 
+-#define N 6
+-#define H (2*N + 1)
+-#define W (2*N + 1)
+-
+-char maze[H][W];
+-int used[N][N];
++int N;
++int H, W;
++char **maze;
++int **used;
+ 
+ int dx[4] = {1, -1, 0, 0};
+ int dy[4] = {0, 0, 1, -1};
+@@ -40,7 +38,20 @@
+     }
+ }
+ 
+-int main(void) {
++int main(int argc, char *argv[]) {
++    if (argc < 2) {
++        fprintf(stderr, "Usage: %s <size>\n", argv[0]);
++        return 1;
++    }
++
++    N = atoi(argv[1]);
++    H = W = 2*N + 1;
++
++    maze = malloc(H * sizeof(char*));
++    used = malloc(N * sizeof(int*));
++    for (int i = 0; i < H; i++) maze[i] = malloc(W * sizeof(char));
++    for (int i = 0; i < N; i++) used[i] = calloc(N, sizeof(int));
++
+     srand(time(NULL));
+ 
+     for (int i = 0; i < H; i++)
+@@ -58,4 +69,9 @@
+             putchar(maze[i][j]);
+         putchar('\n');
+     }
++
++    for (int i = 0; i < H; i++) free(maze[i]);
++    for (int i = 0; i < N; i++) free(used[i]);
++    free(maze);
++    free(used);
+ }
