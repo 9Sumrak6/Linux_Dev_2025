@@ -1,0 +1,19 @@
+# Number-game installation
+
+1. Generate configure script:
+   ./autogen.sh
+
+2. Configure with prefix (default /usr/local):
+   ./configure --prefix=$PWD/.local
+
+3. Build:
+   make
+
+4. Run unit tests:
+   make check
+
+5. Install (to prefix):
+   make install
+
+6. Remove installed files:
+   make uninstall
