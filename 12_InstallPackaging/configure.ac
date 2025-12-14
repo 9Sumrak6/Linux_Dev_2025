@@ -11,4 +11,5 @@ AC_CONFIG_FILES([
   src/Makefile
   tests/Makefile
 ])
+
 AC_OUTPUT
